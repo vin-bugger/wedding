@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #invitation-card {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        #invitation-card img {
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        #invitation-card h2 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        #invitation-card h1 {
+            margin: 20px 0;
+            color: #e44d26;
+            font-size: 28px;
+            transition: color 0.5s;
+        }
+
+        #invitation-form {
+            margin-top: 20px;
+        }
+
+        #name-input {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #submit-btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cardEntrance {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="invitation-card">
+        <img src="wedding_image.jpg" alt="Wedding Image">
+        <h2>Wedding Invitation</h2>
+        <p>You are cordially invited to the wedding of</p>
+        <h1 id="guest-name">Guest Name</h1>
+    </div>
+
+    <div id="invitation-form">
+        <label for="name-input">Enter Your Name:</label>
+        <input type="text" id="name-input" placeholder="Your Name">
+        <button id="submit-btn" onclick="updateInvitation()">Submit</button>
+    </div>
+
+    <script>
+        function updateInvitation() {
+            var guestName = document.getElementById("name-input").value;
+            var guestNameElement = document.getElementById("guest-name");
+            guestNameElement.innerHTML = guestName;
+            guestNameElement.style.color = "#e44d26"; // Change text color on name update
+        }
+    </script>
+</body>
+</html>
