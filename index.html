@@ -38,34 +38,6 @@
             flex-direction: column;
             align-items: center;
             margin-top: 20px;
-            animation: fadeIn 2s ease-out 2s forwards;
-            /* Delayed fade-in animation */
-        }
-
-        @keyframes swingAnimation {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-20px);
-                /* Adjust the amount to move upwards */
-            }
-        }
-
-        @keyframes swingAnimation {
-
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-
-            50% {
-                transform: translateX(20px);
-                /* Adjust the amount to move to the right */
-            }
         }
 
         #vestContainer {
@@ -88,7 +60,7 @@
             padding: 20px 10px;
             position: absolute;
             z-index: 2;
-            bottom: .5em;
+            bottom: 50%;
             transform: translateY(-50%);
         }
 
@@ -104,7 +76,7 @@
             text-align: center;
             cursor: pointer;
             z-index: 1;
-            bottom: 0;
+            bottom: 50%;
             /* Positioned at the bottom */
             left: 50%;
             transform: translateX(-50%);
