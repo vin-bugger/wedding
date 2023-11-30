@@ -1,103 +1,236 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Marriage Invitation</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
 
-        #invitation-card {
-            max-width: 600px;
-            margin: 50px auto;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            opacity: 0;
-            transform: translateY(-50px);
-            animation: fadeInUp 1s forwards;
-        }
-
-        #invitation-card img {
+        #page1,
+        #page2 {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        #invitation-card h2 {
-            margin: 10px 0;
-            color: #333;
+        #page1 {
+            background-image: url('form.jpg');
+            background-size: cover;
+            background-position: center bottom;
+            overflow: none;
         }
 
-        #invitation-card h1 {
-            margin: 20px 0;
-            color: #e44d26;
-            font-size: 28px;
-            transition: color 0.5s;
-        }
-
-        #invitation-form {
+        #vestContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             margin-top: 20px;
+            animation: fadeIn 2s ease-out 2s forwards;
+            /* Delayed fade-in animation */
         }
 
-        #name-input {
+        @keyframes swingAnimation {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+                /* Adjust the amount to move upwards */
+            }
+        }
+
+        @keyframes swingAnimation {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(20px);
+                /* Adjust the amount to move to the right */
+            }
+        }
+
+        #vestContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: -90%;
+        }
+
+        #inputBox {
+            width: 20vw;
+            max-width: 70%;
+            height: 10vh;
+            margin-bottom: 10px;
+            background-color: rgba(238, 239, 217, 0.848);
+            border: 2px solid #f5eaa7;
+            border-radius: 10px 10px 80px 80px;
+            text-align: center;
+            font-size: 24px;
+            padding: 20px 10px;
+            position: absolute;
+            z-index: 2;
+            bottom: .5em;
+            transform: translateY(-50%);
+        }
+
+        #submitBtn {
+            width: 15vw;
+            height: 10vh;
+            background-color: #c5dceb;
+            border: none;
+            border-radius: 0 0 80% 80%;
+            color: rgb(15, 215, 48);
+            font-size: 24px;
+            position: absolute;
+            text-align: center;
+            cursor: pointer;
+            z-index: 1;
+            bottom: 0;
+            /* Positioned at the bottom */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #page2 {
+            display: none;
+        }
+
+        #invitationContent {
+            text-align: center;
+            padding: 20px;
+        }
+
+        #invitationCard {
+            background: url('wedding_image.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #fff;
+        }
+
+        #flowerShower {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: transparent;
+        }
+
+        .flower {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-image: url('flower.jpg');
+            /* Replace with your flower image */
+            background-size: cover;
+            animation: flowerFall 5s linear infinite;
+        }
+
+        @keyframes flowerFall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        #downloadBtn {
+            margin-top: 20px;
             padding: 10px;
             font-size: 16px;
-        }
-
-        #submit-btn {
-            padding: 10px 20px;
+            cursor: pointer;
             background-color: #4CAF50;
             color: #fff;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes cardEntrance {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            display: none;
         }
     </style>
 </head>
+
 <body>
-    <div id="invitation-card">
-        <img src="wedding_image.jpg" alt="Wedding Image">
-        <h2>Wedding Invitation</h2>
-        <p>You are cordially invited to the wedding of</p>
-        <h1 id="guest-name">Guest Name</h1>
+
+    <!-- Page 1: Name Input -->
+    <div id="page1">
+        <div id="vestContainer">
+            <div id="inputBox" contenteditable="true" placeholder="Your Name"></div>
+            <button id="submitBtn" onclick="showInvitation()">COME</button>
+        </div>
     </div>
 
-    <div id="invitation-form">
-        <label for="name-input">Enter Your Name:</label>
-        <input type="text" id="name-input" placeholder="Your Name">
-        <button id="submit-btn" onclick="updateInvitation()">Submit</button>
+    <!-- Page 2: Invitation Card -->
+    <div id="page2">
+        <div id="invitationContent">
+            <h1>Wedding Invitation</h1>
+            <p>Dear <span id="guestName"></span>,</p>
+            <p>You are cordially invited to the wedding ceremony...</p>
+            <!-- Add more details as needed -->
+        </div>
+        <canvas id="flowerShower"></canvas>
+        <button id="downloadBtn" onclick="downloadInvitation()">Download Invitation</button>
     </div>
 
     <script>
-        function updateInvitation() {
-            var guestName = document.getElementById("name-input").value;
-            var guestNameElement = document.getElementById("guest-name");
-            guestNameElement.innerHTML = guestName;
-            guestNameElement.style.color = "#e44d26"; // Change text color on name update
+        function showInvitation() {
+            const nameInput = document.getElementById('inputBox').innerText;
+            document.getElementById('guestName').textContent = nameInput;
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'flex';
+            document.getElementById('downloadBtn').style.display = 'block';
+            startFlowerShower();
+        }
+
+        function startFlowerShower() {
+            const flowerShower = document.getElementById('flowerShower');
+
+            for (let i = 0; i < 50; i++) {
+                createFlower();
+            }
+
+            function createFlower() {
+                const flower = document.createElement('div');
+                flower.className = 'flower';
+                flower.style.left = `${Math.random() * 100}vw`;
+                flowerShower.appendChild(flower);
+            }
+        }
+
+        function downloadInvitation() {
+            const invitationContent = document.getElementById('invitationContent');
+            html2canvas(invitationContent).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.href = imgData;
+                link.download = 'invitation.png';
+                link.click();
+            });
         }
     </script>
+
+    <!-- Include the html2canvas library -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
 </body>
+
 </html>
