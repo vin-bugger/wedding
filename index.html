@@ -38,6 +38,34 @@
             flex-direction: column;
             align-items: center;
             margin-top: 20px;
+            animation: fadeIn 2s ease-out 2s forwards;
+            /* Delayed fade-in animation */
+        }
+
+        @keyframes swingAnimation {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+                /* Adjust the amount to move upwards */
+            }
+        }
+
+        @keyframes swingAnimation {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(20px);
+                /* Adjust the amount to move to the right */
+            }
         }
 
         #vestContainer {
@@ -48,9 +76,9 @@
         }
 
         #inputBox {
-            width: 20vw;
+            width: 18vw;
             max-width: 70%;
-            height: 10vh;
+            height: 8vh;
             margin-bottom: 10px;
             background-color: rgba(238, 239, 217, 0.848);
             border: 2px solid #f5eaa7;
@@ -60,23 +88,23 @@
             padding: 20px 10px;
             position: absolute;
             z-index: 2;
-            bottom: 50%;
+            bottom: 16.5em;
             transform: translateY(-50%);
         }
 
         #submitBtn {
             width: 15vw;
             height: 10vh;
-            background-color: #c5dceb;
+            background-color: hsl(199, 58%, 94%);
             border: none;
-            border-radius: 0 0 80% 80%;
+            border-radius: 10% 10% 30% 30%;
             color: rgb(15, 215, 48);
             font-size: 24px;
             position: absolute;
             text-align: center;
             cursor: pointer;
             z-index: 1;
-            bottom: 50%;
+            bottom: 15.5em;
             /* Positioned at the bottom */
             left: 50%;
             transform: translateX(-50%);
