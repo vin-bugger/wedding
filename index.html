@@ -42,32 +42,6 @@
             /* Delayed fade-in animation */
         }
 
-        @keyframes swingAnimation {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-20px);
-                /* Adjust the amount to move upwards */
-            }
-        }
-
-        @keyframes swingAnimation {
-
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-
-            50% {
-                transform: translateX(20px);
-                /* Adjust the amount to move to the right */
-            }
-        }
-
         #vestContainer {
             display: flex;
             flex-direction: column;
@@ -89,12 +63,11 @@
             position: absolute;
             z-index: 2;
             bottom: 12em;
-            transform: translateY(-50%);
         }
 
         #submitBtn {
-            width: 20px;
-            height: 10px;
+            width: 20vw;
+            height: 10vh;
             background-color: hsl(199, 58%, 94%);
             border: none;
             border-radius: 80% 80% 5% 5%;
@@ -107,7 +80,6 @@
             bottom: 10.6em;
             /* Positioned at the bottom */
             left: 50%;
-            transform: translateX(-50%);
         }
 
         #page2 {
